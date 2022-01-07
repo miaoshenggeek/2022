@@ -8,11 +8,11 @@ class Solution:
                     yield nr, nc
                     
         def dfs(grid,i,j,idx):
-            
-            if i<0 or i>=len(grid) or j<0 or j>=len(grid) or (i,j) in seen or not grid[i][j]==1:
+            nonlocal ans
+            if i<0 or i>=len(grid) or j<0 or j>=len(grid) or not grid[i][j]==1:
                 return
             #if grid[i][j]==1:
-            seen.add((i,j))
+            ans+=1
             grid[i][j]=idx
 
             dfs(grid,i-1,j,idx)
@@ -25,9 +25,9 @@ class Solution:
         for i in range(n):
             for j in range(n):
                 if grid[i][j]==1:
-                    seen=set()
+                    ans=0
                     dfs(grid,i,j,idx)
-                    rt[idx]=len(seen)
+                    rt[idx]=ans
                 idx+=1
         ans=max(rt.values())
         for i in range(n):
