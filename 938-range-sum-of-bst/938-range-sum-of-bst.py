@@ -7,14 +7,15 @@
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         def helper(root,l,h):
+            nonlocal res
             if not root:return
             if l<=root.val<=h:
-                res.append(root.val)
+                res+=root.val
                 helper(root.right,l,h)
                 helper(root.left,l,h)
             if root.val<l:helper(root.right,l,h)
             if root.val>h:helper(root.left,l,h)
-        res=[]
+        res=0
         helper(root,low,high)
-        return sum(res)
+        return res
             
