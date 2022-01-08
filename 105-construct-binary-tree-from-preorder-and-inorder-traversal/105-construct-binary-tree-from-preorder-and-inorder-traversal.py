@@ -9,12 +9,13 @@ class Solution:
         def helper(preorder,inorder):
             if not preorder or not inorder:
                 return
-            a=preorder[0]
+            a=preorder[-1]
             root=TreeNode(a)    
-            preorder.pop(0)
+            preorder.pop()
             b=inorder.index(a)
             root.left=helper(preorder,inorder[:b])
             root.right=helper(preorder,inorder[b+1:])
             return root
+        preorder.reverse()
         return helper(preorder,inorder)
         
