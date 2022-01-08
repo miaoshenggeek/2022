@@ -32,14 +32,15 @@ class Codec:
         """
         arr=data.split(",")
         def helper(arr):
-            if arr[0]=="#":
-                arr.pop(0)
+            if arr[-1]=="#":
+                arr.pop()
                 return None
-            root=TreeNode(arr[0])
-            arr.pop(0)
+            root=TreeNode(arr[-1])
+            arr.pop()
             root.left=helper(arr)
             root.right=helper(arr)
             return root
+        arr.reverse()
         return helper(arr)
         
 
