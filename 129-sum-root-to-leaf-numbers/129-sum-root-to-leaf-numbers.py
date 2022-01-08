@@ -12,7 +12,7 @@ class Solution:
             path=path*10+root.val
             if not root.right and not root.left:
                 res+=path
-                return
+                
             dfs(root.left,path)    
             dfs(root.right,path)
             
