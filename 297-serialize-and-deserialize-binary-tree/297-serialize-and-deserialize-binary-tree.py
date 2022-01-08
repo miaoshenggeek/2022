@@ -30,18 +30,16 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        arr=data.split(",")
-        def helper(arr):
-            if arr[-1]=="#":
-                arr.pop()
+        def doit():
+            val = next(vals)
+            if val == '#':
                 return None
-            root=TreeNode(arr[-1])
-            arr.pop()
-            root.left=helper(arr)
-            root.right=helper(arr)
-            return root
-        arr.reverse()
-        return helper(arr)
+            node = TreeNode(int(val))
+            node.left = doit()
+            node.right = doit()
+            return node
+        vals = iter(data.split(","))
+        return doit()
         
 
 # Your Codec object will be instantiated and called as such:
