@@ -21,10 +21,7 @@ class Solution:
         preorder.pop(0)
         idx=0
         if preorder:
-            end=preorder[-1]
-            if end<a:root.left=self.bstFromPreorder(preorder)
-            else:
-                idx=bisect_left(preorder,a)
-                root.left=self.bstFromPreorder(preorder[:idx])
-                root.right=self.bstFromPreorder(preorder[idx:])
+            idx=bisect_left(preorder,a)
+            root.left=self.bstFromPreorder(preorder[:idx])
+            root.right=self.bstFromPreorder(preorder[idx:])
         return root
