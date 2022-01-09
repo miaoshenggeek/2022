@@ -12,17 +12,19 @@ class Solution:
         preorder.pop(0)
         idx=0
         if preorder:
-            prev=preorder[0]
-            for i,cur in enumerate(preorder):    
-                if prev<a<cur:
-                    idx=i
-                    break
-                prev=cur
-        #print(idx,preorder)
-        if idx==0 and preorder:
-            if preorder[0]>a:root.right=self.bstFromPreorder(preorder[idx:])
-            else:root.left=self.bstFromPreorder(preorder)
-        else:
-            root.left=self.bstFromPreorder(preorder[:idx])
-            root.right=self.bstFromPreorder(preorder[idx:])
+            end=preorder[-1]
+            if end<a:root.left=self.bstFromPreorder(preorder)
+            else:
+                prev=preorder[0]
+                for i,cur in enumerate(preorder):    
+                    if prev<a<cur:
+                        idx=i
+                        break
+                    prev=cur
+                #print(idx,preorder)
+                #if idx==0 and preorder[0]>a:root.right=self.bstFromPreorder(preorder[idx:])
+                #else:root.left=self.bstFromPreorder(preorder)
+                #else:
+                root.left=self.bstFromPreorder(preorder[:idx])
+                root.right=self.bstFromPreorder(preorder[idx:])
         return root
