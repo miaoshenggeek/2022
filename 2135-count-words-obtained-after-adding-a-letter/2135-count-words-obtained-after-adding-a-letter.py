@@ -1,18 +1,23 @@
 class Solution:
     def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:
-        seen = set()
-        for word in startWords: 
-            m = 0
-            for ch in word: m ^= 1 << ord(ch)-ord("a")
-            
-            seen.add(m)
-            
-        ans = 0 
-        for word in targetWords: 
-            m = 0 
-            for ch in word: m ^= 1 << ord(ch) - ord("a")
-            for ch in word: 
-                if m ^ (1 << ord(ch)-ord("a")) in seen: 
-                    ans += 1
-                    break 
-        return ans 
+        
+        def getHash(w: str) -> List[int]:
+            h = [0] * 26
+            for c in w:
+                h[ord(c) - ord('a')] = 1
+            return h
+        
+        groups = defaultdict(set)
+        for w in startWords:
+            h = getHash(w)
+            groups[len(w)].add(tuple(h))
+        cnt = 0
+        for w in targetWords:
+            h = getHash(w)
+            for c in w:
+                h[ord(c) - ord('a')] = 0
+                if tuple(h) in (groups[len(w) - 1]):
+                    cnt += 1
+                    break
+                h[ord(c) - ord('a')] = 1
+        return cnt
