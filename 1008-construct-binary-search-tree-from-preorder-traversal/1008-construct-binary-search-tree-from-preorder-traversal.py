@@ -5,7 +5,8 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    '''def bstFromPreorder(self, A: List[int]) -> Optional[TreeNode]:
+    '''
+    def bstFromPreorder(self, A: List[int]) -> Optional[TreeNode]:
         return self.buildTree(A, float('inf'))
 
     def buildTree(self, A, bound):
@@ -18,10 +19,10 @@ class Solution:
         if not preorder:return None
         a=preorder[0]
         root=TreeNode(a)
-        preorder.pop(0)
+        #preorder.pop(0)
         idx=0
         if preorder:
-            idx=bisect_left(preorder,a)
-            root.left=self.bstFromPreorder(preorder[:idx])
+            idx=bisect.bisect(preorder,a)
+            root.left=self.bstFromPreorder(preorder[1:idx])
             root.right=self.bstFromPreorder(preorder[idx:])
         return root
