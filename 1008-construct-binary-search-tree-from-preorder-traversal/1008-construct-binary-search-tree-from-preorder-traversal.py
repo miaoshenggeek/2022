@@ -16,7 +16,7 @@ class Solution:
         node.right = self.buildTree(A, bound)
         return node'''
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
-        if not preorder:return None
+        '''if not preorder:return None
         a=preorder[0]
         root=TreeNode(a)
         #preorder.pop(0)
@@ -25,4 +25,17 @@ class Solution:
             idx=bisect.bisect(preorder,a)
             root.left=self.bstFromPreorder(preorder[1:idx])
             root.right=self.bstFromPreorder(preorder[idx:])
-        return root
+        return root'''
+        def helper(preorder,inorder):
+            if not preorder or not inorder:
+                return
+            a=preorder[-1]
+            root=TreeNode(a)    
+            preorder.pop()
+            b=inorder.index(a)
+            root.left=helper(preorder,inorder[:b])
+            root.right=helper(preorder,inorder[b+1:])
+            return root
+        preorder.reverse()
+        inorder=sorted(preorder)
+        return helper(preorder,inorder)
