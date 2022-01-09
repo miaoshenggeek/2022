@@ -21,10 +21,6 @@ class Solution:
                         idx=i
                         break
                     prev=cur
-                #print(idx,preorder)
-                #if idx==0 and preorder[0]>a:root.right=self.bstFromPreorder(preorder[idx:])
-                #else:root.left=self.bstFromPreorder(preorder)
-                #else:
                 root.left=self.bstFromPreorder(preorder[:idx])
                 root.right=self.bstFromPreorder(preorder[idx:])
         return root
