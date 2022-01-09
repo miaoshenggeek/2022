@@ -16,10 +16,10 @@ class Solution:
             t=preorder[0]
             idx=preorder.index(v)
             idt=postorder.index(t)
-            if idx==0: 
-                root.left=self.constructFromPrePost(preorder,postorder)
-            #elif idt==len(postorder)-1:
-                #root.right=self.constructFromPrePost(preorder,postorder)
+            #if idx==0: 
+                #root.left=self.constructFromPrePost(preorder,postorder)
+            if idt==len(postorder)-1:
+                root.right=self.constructFromPrePost(preorder,postorder)
             else:
                 root.left=self.constructFromPrePost(preorder[:idx],postorder[:idt+1])
                 root.right=self.constructFromPrePost(preorder[idx:],postorder[idt+1:])
