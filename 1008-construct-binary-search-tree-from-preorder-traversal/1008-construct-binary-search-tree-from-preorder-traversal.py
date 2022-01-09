@@ -5,22 +5,13 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
-        if not preorder:return None
-        a=preorder[0]
-        root=TreeNode(a)
-        preorder.pop(0)
-        idx=0
-        if preorder:
-            end=preorder[-1]
-            if end<a:root.left=self.bstFromPreorder(preorder)
-            else:
-                prev=preorder[0]
-                for i,cur in enumerate(preorder):    
-                    if prev<a<cur:
-                        idx=i
-                        break
-                    prev=cur
-                root.left=self.bstFromPreorder(preorder[:idx])
-                root.right=self.bstFromPreorder(preorder[idx:])
-        return root
+    def bstFromPreorder(self, A: List[int]) -> Optional[TreeNode]:
+       
+        return self.buildTree(A, float('inf'))
+
+    def buildTree(self, A, bound):
+        if not A or A[0] > bound: return None
+        node = TreeNode(A.pop(0))
+        node.left = self.buildTree(A, node.val)
+        node.right = self.buildTree(A, bound)
+        return node
