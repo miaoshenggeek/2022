@@ -8,15 +8,15 @@ class Solution:
     def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
         def helper(root,path):
             nonlocal res
-            if not root:
-                return
+            
             path+=str(root.val)
-            if path and not root.left and not root.right:
-                #print(path)
-                res+=int(path,2)
-                
             if root.left:helper(root.left,path)
             if root.right:helper(root.right,path)
+            if not root.left and not root.right:
+                #print(path)
+                res+=int(path,2)
+                return
+            
             
             
         res=0
