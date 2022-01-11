@@ -23,8 +23,7 @@ class Solution:
                 return dfs_max
             
             max_sum = float('-inf')
-            maxPathSumSubtree(root)
-            return max(max_sum,maxPathSumSubtree(root))
+            return max(maxPathSumSubtree(root), max_sum)
         
             
             
