@@ -10,20 +10,19 @@ class Solution:
             # leveraging subtrees...
             # recurse down until leaf
             # go up, return max(root,left+root,right+root) BUT check left, right, root+left+right against global max
-            max_sum = float('-inf')
-
+            
             def maxPathSumSubtree(root: Optional[TreeNode]) -> int:
                 if not root.left and not root.right:
                     return root.val
                 left_val = maxPathSumSubtree(root.left) if root.left else float('-inf')
                 right_val = maxPathSumSubtree(root.right) if root.right else float('-inf')
-                dfs_max = max(root.val, left_val + root.val, right_val + root.val)
-
+                dfs_max = root.val+max(left_val, right_val,0) #carry
                 nonlocal max_sum
-                max_sum = max(max_sum, dfs_max, left_val, right_val, root.val + left_val + right_val)
-
+                max_sum = max(max_sum, dfs_max,left_val, right_val, root.val + left_val + right_val) #rt
+                #print(dfs_max,max_sum)
                 return dfs_max
-
+            
+            max_sum = float('-inf')
             return max(maxPathSumSubtree(root), max_sum)
         
             
