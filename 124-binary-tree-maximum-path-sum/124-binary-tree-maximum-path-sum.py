@@ -5,25 +5,30 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        # start from leaf:
-        # cal max for each leaf,then max for each parent...then max for root
-        def helper(node):
-            nonlocal max_sum
-            if not node:
-                return 0
-            left=max(helper(node.left),0)
-            right=max(helper(node.right),0)
-            #the price to start a new path where 'node' is a highest node
-            price_newpath=node.val+left+right
-            #update max_sum
-            max_sum=max(max_sum,price_newpath)
+
+    def __init__(self):
+        self.max_sum = None
+    
+    def recursive_sum(self, node):
+        if node:
+            max_sum_left = self.recursive_sum(node.left)
+            node_val = node.val
+            max_sum_right = self.recursive_sum(node.right)
             
-            #retrun the max if continue the same path
-            return node.val+max(left,right)
-        max_sum=float("-inf")
-        helper(root)
-        return max_sum
+            max_sum_node = max(node_val, node_val + max_sum_left, node_val + max_sum_right)
+            self.max_sum = max(self.max_sum, max_sum_node, node_val + max_sum_left + max_sum_right)
+            
+            return max_sum_node
+        return 0
+
+    
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        # SOL1: Recursive Solution
+        # TC = O(N) and SC = O(N) if tree is left skewed (O(logN) if tree balanced)
+        self.max_sum = root.val
+        self.recursive_sum(root)
+        
+        return self.max_sum
             
             
         
