@@ -10,15 +10,16 @@ class Solution:
             nonlocal res
             if not root:
                 return
-            path.append(str(root.val))
+            path+=str(root.val)
             if path and not root.left and not root.right:
                 #print(path)
-                res+=int("".join(path),2)
+                res+=int(path,2)
+                
             if root.left:helper(root.left,path)
             if root.right:helper(root.right,path)
-            path.pop()
+            
             
         res=0
-        path=[]
+        path=""
         helper(root,path)
         return res
