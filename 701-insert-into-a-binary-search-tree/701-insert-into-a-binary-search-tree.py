@@ -10,15 +10,9 @@ class Solution:
             new=new=TreeNode(val)
             root=new
         if val>root.val:
-            if root.right:self.insertIntoBST(root.right,val)
-            else:
-                new=TreeNode(val)
-                root.right=new
+            root.right=self.insertIntoBST(root.right,val)
         if val<root.val:
-            if root.left:self.insertIntoBST(root.left,val)
-            else:
-                new=TreeNode(val)
-                root.left=new
+            root.left=self.insertIntoBST(root.left,val)
         return root
             
             
