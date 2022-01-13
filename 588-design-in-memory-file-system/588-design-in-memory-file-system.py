@@ -10,6 +10,7 @@ class FileSystem:
         self.root=TrieNode()
 
     def ls(self, path: str) -> List[str]:
+        if len(path)==1:return sorted(self.root.children.keys())
         path_list=path.split("/")
         node=self.root
         for p in path_list:
@@ -20,11 +21,8 @@ class FileSystem:
             #print(p)
             #print([p])
             return [p] # -> List[str]
-        ans=[i for i in node.children.keys()]
-        if not ans:
-            return ans
-        ans.sort()
-        return ans
+        return sorted(node.children.keys())
+        
 
     def mkdir(self, path: str) -> None:
         path_list=path.split("/")
