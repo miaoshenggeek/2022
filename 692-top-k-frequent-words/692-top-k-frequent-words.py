@@ -19,7 +19,7 @@ class Solution:
         for key in dic:             #O(n)
             heapq.heappush(q,-key) 
             #print(dic,q)  
-            if len(q)>k:q=heapq.nsmallest(k,q) #O(k log k) maintains a heap size k, not n.
+            #if len(q)>k:q=heapq.nsmallest(k,q) #O(k log k) maintains a heap size k, not n.
             #q.pop() pop from end, but the end is random, heapq.heappop(q) pop from head
         res=[]
         # customize python heap compare until I see your solution. 
