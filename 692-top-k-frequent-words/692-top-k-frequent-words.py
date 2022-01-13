@@ -1,35 +1,17 @@
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        
-        #TC:O(n log k)
-        #TS:O(n)
-        c=collections.Counter(words)
-        #return heapq.nlargest(k, c.keys(), key = c.get)#no sorting result
-        # heapq.nsmallest(k, Freqs, key=lambda word:(~Freqs[word], word)
-        #~Freqs[words] means 'rank the frequencies of words in descending order' 
-        #(the first sorting criteria in lambda function);
-        # word means 'rank the words with the highest frequencies in their alphabetical order'
-        # (the second sorting criteria in lambda function).
-        # Finally, nsmallest() returns the [:k] of the result.
-        # nsmallest is implemented O(nlgk)# just maintains a heap size k, not n.
-        q=[]
-        dic=defaultdict(list)
-        for word,count in c.items():
-            dic[count].append(word)
-        for key in dic:             #O(n)
-            heapq.heappush(q,-key) 
-            #print(dic,q)  
-            #if len(q)>k:q=heapq.nsmallest(k,q) #O(k log k) maintains a heap size k, not n.
-            #q.pop() pop from end, but the end is random, heapq.heappop(q) pop from head
-        res=[]
-        # customize python heap compare until I see your solution. 
-        # Just wrap a class with customize compare function.
-        #TBD
-        while q:                   #O(k)  
-            idx=heapq.heappop(q)   #O(1)
-            res.extend(sorted(dic[-idx])) # O(1)
-            if len(res)>=k:return res[:k]  #O(1)
-        return res
+        counter = collections.Counter(words)    # O(n) space and time
+        return [j[0] for j in sorted(counter.items(),key=lambda i: (-i[1],i[0]))][:k]
+        """heap = []    # max length will be k, so O(k) extra space
+        for word,freq in counter.items():    # O(n) time to iterate counter
+            heapq.heappush(heap, (freq,word))    # O(logk)
+            if len(heap) > k:    # maintain the heap length of k
+                print(heap)
+                heapq.heappop(heap)    # pop the smallest freq #O(log k)
+             
+        res=heapq.nsmallest(k,heap,key=lambda i: (-i[0],i[1]))
+        print(res)
+        return [i[1] for i in res]"""
         
         '''#bucket sort
         #TC: O(n)
@@ -40,7 +22,7 @@ class Solution:
             bucket[count].append(word)
         res=[]
         for i,wordlist in enumerate(bucket[::-1]):
-            res.extend(sorted(wordlist))
+            res.extend(sorted(wordlist))#O(len(wordlist) log )
             if len(res)>=k:return res[:k]
         return res'''
         
