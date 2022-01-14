@@ -14,7 +14,7 @@ class Solution:
             ans=min(ans,n-i-(P[n]-P[i])+P[i])
         return ans'''
     
-        n = len(s)
+        """n = len(s)
         cnt0 = s.count('0')
         cnt1 = 0
         res = n - cnt0
@@ -24,4 +24,18 @@ class Solution:
             elif s[i] == '1':
                 res = min(res, cnt1+cnt0)
                 cnt1 += 1
-        return res
+        return res"""
+        ones = zeros = 0
+        result = 0
+        for c in s:
+            if c == "1":
+                ones += 1
+            else:
+                if ones:
+                    zeros += 1
+                    if zeros == ones:
+                        result += ones
+                        ones = zeros = 0
+        result += zeros
+        return result
+        
