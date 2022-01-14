@@ -3,7 +3,7 @@ class Solution:
         #那我们只要一直记录着当前位置的前面有多少个1，后面有多少个0即可！
         #注意：可能存在最后全为0的情况（如示例3），那么我们是选不到某个’1’作为开头的，
         #所以我们先将全部翻转成’0’所花费的次数作为初始默认次数，然后和我们每次计算的结果比较即可。
-        if not "0" in s or not "1" in s or len(s)==1: return 0
+        '''if not "0" in s or not "1" in s or len(s)==1: return 0
         n=len(s)
         P=[0]*(n+1)
         for i in range(n):
@@ -12,9 +12,9 @@ class Solution:
         ans=n
         for i in range(n+1):
             ans=min(ans,n-i-(P[n]-P[i])+P[i])
-        return ans
+        return ans'''
     
-        '''n = len(s)
+        n = len(s)
         cnt0 = s.count('0')
         cnt1 = 0
         res = n - cnt0
@@ -24,4 +24,4 @@ class Solution:
             elif s[i] == '1':
                 res = min(res, cnt1+cnt0)
                 cnt1 += 1
-        return res'''
+        return res
