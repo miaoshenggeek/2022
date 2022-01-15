@@ -12,6 +12,8 @@ class Solution:
                     diff=v3-nums[hi]
                 if lo>i+1+j and abs(v3-nums[lo])<abs(diff):
                     diff=v3-nums[lo]
+                if diff==0:
+                    break
         return target-diff
         
         
