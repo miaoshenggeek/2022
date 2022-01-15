@@ -6,8 +6,8 @@ class Solution:
         #interchange the 'j'th and 'n-1-j'th column, for 0<=j<=n-1 where n is the number of columns in matrix.
         for i in range(4):
             if mat==target:return True
-            mat=[list(i) for i in list(zip(*mat[::-1]))]
-            print(mat)
+            mat=[list(i) for i in zip(*mat[::-1])]
+            #print(mat)
         return False
             
                 
