@@ -33,7 +33,7 @@ class Solution:
             ans = round((t - s)/n)   #use round to return closest integer to float-四舍五入
             # if this number is smaller than i-th number
             # then return this number, as the next one only makes it bigger
-            print(ans)
+            #print(ans)
             if ans <arr[i]: return ans 
             s += arr[i]
             n -= 1
