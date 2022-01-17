@@ -9,15 +9,15 @@ class Solution:
         while lb<ub:
             mid=lb+(ub-lb)//2
             a=bisect_left(arr,mid,0,n)
-            can=sum(arr[:a])+mid*(n-a)
+            can=sum(arr[:a])+mid*(n-a) #F(lb)
             if can==t:
                 ub=mid
             elif can<t:
-                lb=mid+1
+                lb=mid+1 #
             elif can>t:
                 ub=mid
         #print(can)
-        #always return lb , lb>=t
+        #always return lb , F(lb)>=t
         a=bisect_left(arr,lb,0,n)
         can=sum(arr[:a])+lb*(n-a)
         b=bisect_left(arr,lb-1,0,n)
