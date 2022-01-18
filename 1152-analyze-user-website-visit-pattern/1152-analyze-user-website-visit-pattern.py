@@ -1,6 +1,6 @@
 class Solution:
     def mostVisitedPattern(self, username: List[str], timestamp: List[int], website: List[str]) -> List[str]:
-        arr=sorted(list(zip(username,timestamp,website)),key=lambda i: (i[0],i[1]))
+        arr=sorted(list(zip(username,timestamp,website)))
         #print(arr)
         pattern=[]
         user=arr[0][0]
