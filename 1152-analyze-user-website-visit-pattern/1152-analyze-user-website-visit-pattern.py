@@ -23,11 +23,7 @@ class Solution:
         #print(pattern)
         for cur in pattern:
             if len(cur)>3:
-                temp=set()
-                for i in range(len(cur)):
-                    for j in range(i+1,len(cur)):
-                        for k in range(j+1,len(cur)):
-                            temp.add(tuple([cur[i],cur[j],cur[k]]))
+                temp=set(itertools.combinations(cur,3))
                 res.extend(list(temp))
             else:
                 res.append(tuple(cur))
