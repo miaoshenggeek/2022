@@ -9,10 +9,8 @@ class Solution:
             else:
                 if cur:
                     cur=cur.lower()
-                    if cur in banned:
-                        cur=""
-                        continue
-                    words[cur]+=1
+                    if not cur in banned:   
+                        words[cur]+=1
                 cur=""
-        print(words)
+        #print(words)
         return max(words,key=lambda i: words[i])
