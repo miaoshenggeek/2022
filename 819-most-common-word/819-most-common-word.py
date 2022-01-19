@@ -1,6 +1,6 @@
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
-        words=defaultdict(int)
+        words={}
         banned=set(banned)
         cur=""
         for i in paragraph+" ":
@@ -10,7 +10,8 @@ class Solution:
                 if cur:
                     cur=cur.lower()
                     if not cur in banned:   
+                        words.setdefault(cur,0)
                         words[cur]+=1
                 cur=""
-        #print(words)
-        return max(words,key=lambda i: words[i])
+        
+        return max(words,key=words.get)
