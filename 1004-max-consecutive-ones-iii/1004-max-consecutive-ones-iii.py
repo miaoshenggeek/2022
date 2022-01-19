@@ -1,6 +1,7 @@
 class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
-        '''start=0
+        '''
+        start=0
         end=1
         cur=1-nums[start]
         res=k
@@ -18,19 +19,19 @@ class Solution:
         left = right = 0
 
         for right in range(len(nums)):
-            # if we encounter a 0 the we decrement K
+            #right moves at least k steps faster than left,
+            #right can move (sum of front 1) + k steps befor decrement k to 0, 
             if nums[right] == 0:
                 k -= 1
             # else no impact to K
 
-            # if K < 0 then we need to move the left part of the window forward
-            # to try and remove the extra 0's
+            # A negative k denotes we have consumed all allowed flips and window has
+            # more than allowed zeros, thus increment left pointer by 1 to keep the window size same.
             if k < 0:
-                # if the left one was zero then we adjust K
+                #If the left element to be thrown out is zero we increase k.
                 if nums[left] == 0:
                     k += 1
-                # regardless of whether we had a 1 or a 0 we can move left side by 1
-                # if we keep seeing 1's the window still keeps moving as-is
+                #Since we have to find the MAX window, we never reduce the size of the window. 
                 left += 1
 
         return right - left + 1
