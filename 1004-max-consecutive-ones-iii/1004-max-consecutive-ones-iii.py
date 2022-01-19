@@ -21,16 +21,13 @@ class Solution:
         for right in range(len(nums)):
             #right moves at least k steps faster than left,
             #right can move (sum of front 1) + k steps befor decrement k to 0, 
-            if nums[right] == 0:
-                k -= 1
+            k -= 1-nums[right]  #if nums[right] == 0:
             # else no impact to K
-
             # A negative k denotes we have consumed all allowed flips and window has
             # more than allowed zeros, thus increment left pointer by 1 to keep the window size same.
             if k < 0:
                 #If the left element to be thrown out is zero we increase k.
-                if nums[left] == 0:
-                    k += 1
+                k += 1-nums[left]#if nums[left] == 0:
                 #Since we have to find the MAX window, we never reduce the size of the window. 
                 left += 1
 
