@@ -2,7 +2,7 @@ class Solution:
     def lengthOfLongestSubstring(self, s):
         if not s: return 0
         res=1
-        cur=1
+        
         n=len(s)
         start=0
         end=0
