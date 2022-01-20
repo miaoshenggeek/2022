@@ -2,7 +2,6 @@ class Solution:
     def lengthOfLongestSubstring(self, s):
         if not s: return 0
         res=1
-        cur=1
         n=len(s)
         start=0
         end=0
@@ -11,11 +10,10 @@ class Solution:
         while end<n-1:
             end+=1
             if s[end] in loc and loc[s[end]]>=start:
-                start=loc[s[end]]+1
-                
-            cur=end-start+1
+                start=loc[s[end]]+1   
+            else:
+                res=max(end-start+1,res)
             loc[s[end]]=end
-            res=max(cur,res)    
             #print(res,start,end,loc)
         return res
 '''
