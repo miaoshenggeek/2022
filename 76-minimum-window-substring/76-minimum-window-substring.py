@@ -3,7 +3,8 @@ class Solution:
         if len(s)<len(t):return ""
         target=Counter(t)
         formed=0
-        res=[]
+        res=""
+        comp=len(s)
         start=0
         source=Counter()
         for i in range(len(s)):
@@ -15,8 +16,11 @@ class Solution:
                 if start<len(s) and source[s[start]]<target[s[start]]:
                     formed-=1
                     #print(start,i)
-                    res.append(s[start:i+1])
+                    if i-start+1<=comp:
+                        res=s[start:i+1]
+                        comp=i-start+1
+                    
                 start+=1
         #print(res)            
                     
-        return min(res,key=len) if res else ""
+        return res
