@@ -1,6 +1,6 @@
 class Solution:
     def findLength(self, nums1: List[int], nums2: List[int]) -> int:
-        # LCS
+        '''# LCS
         #dp[i][j] will be the answer for inputs A[i:], B[j:].
         n=len(nums1)
         m=len(nums2)
@@ -10,5 +10,17 @@ class Solution:
                 if nums1[i-1]==nums2[j-1]:
                     dp[i][j]=dp[i-1][j-1]+1
         #print(dp)
-        return max(j for i in dp for j in i)
+        return max(j for i in dp for j in i)'''
+        nums2Str = ''.join([chr(n) for n in nums2])
+        longest = 0
+        maxStr = ''
+        for n in nums1:
+            maxStr += chr(n)
+            if maxStr in nums2Str:
+                longest = max(longest, len(maxStr))
+            else:
+                maxStr = maxStr[1:]
+        return longest
+        
+        
                 
