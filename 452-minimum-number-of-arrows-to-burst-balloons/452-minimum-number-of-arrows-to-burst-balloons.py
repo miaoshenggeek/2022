@@ -3,7 +3,7 @@ class Solution:
         #count overlapped balloons as one. 
         #count the number of unoverlapped ballons
         #sort by start
-        A.sort(key=lambda i:(i[0],i[1]))
+        A.sort(key=lambda i:i[0])
         #print(A)
         c=1
         start=A[0][0]#1
@@ -12,11 +12,9 @@ class Solution:
             if i<=end:
                 start=i#2 
                 end=min(j,end) #6             
-                 
             else:
                 c+=1
                 start=i
                 end=j
-            
             #print(q)
         return c
