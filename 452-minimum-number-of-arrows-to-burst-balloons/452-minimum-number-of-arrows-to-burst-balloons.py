@@ -10,7 +10,7 @@ class Solution:
         end=A[0][1]#6
         for i,j in A[1:]:
             if i<=end:
-                start=max(i,start)#2 
+                start=i#2 
                 end=min(j,end) #6             
                  
             else:
