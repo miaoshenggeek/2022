@@ -34,9 +34,7 @@ class Solution:
             end_1 = end_1.next
             end_2 = end_2.next
         end_node = end_1
-    
-        tmp = begin_node.val
-        begin_node.val = end_node.val
-        end_node.val = tmp
+        
+        begin_node.val,end_node.val = end_node.val,begin_node.val
         
         return head
