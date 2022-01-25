@@ -24,7 +24,7 @@ class Solution:
             prev = runner
             runner = runner.next
             
-        while runner is not None:
+        while runner:
             runner = runner.next
             follower = follower.next
             
