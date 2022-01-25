@@ -9,26 +9,17 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        
         seen={}
-        if not head:return head 
-        
-        def getCopy(node):
-            if node:
-                if node in seen:
-                    return seen[node]
+        def helper(old) :
+            if old:
+                if old in seen:
+                    return seen[old]
                 else:
-                    seen[node]=Node(node.val)
-                    return seen[node]
-            return None
-        old=head
-        new=Node(old.val)
-        seen[old]=new
+                    node=Node(old.val)
+                    seen[old]=node
+                    node.next=helper(old.next)
+                    node.random=helper(old.random)
+                return node
+            return
+        return helper(head)
         
-        while old:
-            new.random=getCopy(old.random)
-            new.next=getCopy(old.next)
-            old=old.next
-            new=new.next
-            
-        return seen[head]
