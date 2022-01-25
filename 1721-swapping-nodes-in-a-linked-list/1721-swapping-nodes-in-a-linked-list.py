@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        '''arr=[]
+        arr=[]
         while head:
             arr.append(head.val)
             head=head.next
@@ -14,19 +14,5 @@ class Solution:
         for i in arr:
             new=ListNode(i)
             prev.next=new
-            prev=prev.next
-        return ptr.next'''
-        
-        runner = follower = head
-        prev = None
-        
-        for i in range(k):
-            prev = runner
-            runner = runner.next
-            
-        while runner:
-            runner = runner.next
-            follower = follower.next
-            
-        prev.val, follower.val = follower.val, prev.val
-        return head
+            prev=new
+        return ptr.next
