@@ -11,15 +11,15 @@ class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         seen={}
         def helper(old) :
-            if old:
-                if old in seen:
-                    return seen[old]
-                else:
-                    node=Node(old.val)
-                    seen[old]=node
-                    node.next=helper(old.next)
-                    node.random=helper(old.random)
-                return node
-            return
+            if not old:return
+            if old in seen:
+                return seen[old]
+            else:
+                node=Node(old.val)
+                seen[old]=node
+                node.next=helper(old.next)
+                node.random=helper(old.random)
+            return node
+            
         return helper(head)
         
