@@ -5,18 +5,18 @@
 #         self.next = next
 class Solution:
     def sortLinkedList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next: return head
-        prev=dummy=ListNode()
-        cur=head
-        prev.next=cur
+        
+        prev=cur=head
+        cur=cur.next
         while cur:
-            if cur.val<0 and not dummy.next==cur:
-                prev.next=cur.next
-                cur.next=dummy.next
-                dummy.next=cur
-                cur=prev.next
-                
+            temp=cur.next
+            if cur.val<0:
+                prev.next=temp
+                cur.next=head
+                head=cur
             else:    
-                cur=cur.next
-                prev=prev.next
-        return dummy.next
+                prev=cur
+            cur=temp
+        return head
+    
+                
