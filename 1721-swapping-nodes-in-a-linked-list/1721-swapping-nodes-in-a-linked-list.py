@@ -17,24 +17,16 @@ class Solution:
             prev=prev.next
         return ptr.next'''
         
-        begin_cnt = 1
+        runner = follower = head
+        prev = None
         
-        begin_node = head
-        end_node = None
-        
-        # finding beginning node
-        while begin_cnt < k:
-            begin_cnt += 1
-            begin_node = begin_node.next
+        for i in range(k):
+            prev = runner
+            runner = runner.next
             
-        end_1 = head
-        end_2 = begin_node.next
-        # finding end node
-        while end_2 is not None:
-            end_1 = end_1.next
-            end_2 = end_2.next
-        end_node = end_1
-        
-        begin_node.val,end_node.val = end_node.val,begin_node.val
-        
+        while runner is not None:
+            runner = runner.next
+            follower = follower.next
+            
+        prev.val, follower.val = follower.val, prev.val
         return head
