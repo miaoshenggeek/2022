@@ -31,8 +31,8 @@ class Solution:
             val, idx = heapq.heappop(h)
             cur.next = ListNode(val)
             cur = cur.next
-            lists[idx] = lists[idx].next
+            node = lists[idx] = lists[idx].next
             
-            if lists[idx]:
-                heapq.heappush(h, (lists[idx].val, idx))
+            if node:
+                heapq.heappush(h, (node.val, idx))
         return head.next
