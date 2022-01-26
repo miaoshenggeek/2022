@@ -20,10 +20,10 @@ class Solution:
                 seen[node]=new
                 new.neighbors=[]
                 for i in node.neighbors:
-                    if i not in seen:
-                        new.neighbors.append(helper(i))
-                    else:
-                        new.neighbors.append(seen[i])
+                    #if i not in seen:
+                    new.neighbors.append(helper(i))
+                    #else:
+                    #new.neighbors.append(seen[i])
                 return new
         return helper(node)
             
