@@ -6,15 +6,16 @@
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        def helper(root,num):
+        def helper(root,cur=0):
             nonlocal res
-            num=num*10+root.val
-            if root.left:helper(root.left,num)
-            if root.right:helper(root.right,num)
+            if not root:return 
+            cur=cur*10+root.val
             if not root.left and not root.right:
-                res+=num
+                res+=cur
+            helper(root.left,cur)
+            helper(root.right,cur)
         res=0
-        helper(root,0)
+        helper(root)
         return res
             
         
