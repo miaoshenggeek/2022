@@ -18,12 +18,14 @@ class Solution:
             else:
                 new=Node(node.val)
                 seen[node]=new
-                new.neighbors=[]
+                #new.neighbors=[]
                 for i in node.neighbors:
-                    #if i not in seen:
                     new.neighbors.append(helper(i))
-                    #else:
-                    #new.neighbors.append(seen[i])
+                    ####method
+                    #For a given node the number of recursive calls = the number of its neighbors
+                    #Each recursive call made would return the clone of a neighbor
+                    #just worry about ONE such call and let the recursion do the rest. 
+                    #always handle the base case or the termination condition of the recursion.
                 return new
         return helper(node)
             
