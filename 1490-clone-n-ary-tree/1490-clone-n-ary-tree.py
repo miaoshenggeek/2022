@@ -12,8 +12,8 @@ class Solution:
         seen={}
         def helper (root):
             if not root:return
-            if root in seen:
-                return seen[root]
+            '''if root in seen:
+                return seen[root]'''
             new=Node(root.val)
             seen[root]=new
             for i in root.children:
