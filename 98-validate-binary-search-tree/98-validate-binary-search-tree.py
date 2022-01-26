@@ -6,10 +6,15 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def helper(node,low=-math.inf,high=math.inf):
-            if not node:
+        def inorder(root):
+            if not root:
                 return True
-            if node.val<=low or node.val>=high:
+            if not inorder(root.left):
                 return False
-            return helper(node.right, node.val,high) and helper(node.left,low,node.val)
-        return helper(root)
+            if root.val <= self.prev:
+                return False
+            self.prev = root.val
+            return inorder(root.right)
+            
+        self.prev = -math.inf ###method how to inorder traverse recursively and return boolean
+        return inorder(root)
