@@ -12,8 +12,9 @@ class Solution:
             cur=cur*10+root.val
             if not root.left and not root.right:
                 res+=cur
-            helper(root.left,cur)
-            helper(root.right,cur)
+            else:
+                helper(root.left,cur)
+                helper(root.right,cur)
         res=0
         helper(root)
         return res
