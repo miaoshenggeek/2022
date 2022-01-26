@@ -6,7 +6,7 @@ class Solution:
             depth, pos = num//100, (num//10)%10
             val = num % 10
             # At each level, store the sum of all the previous nodes covered
-            dic[(depth, pos)] = dic[(depth-1, (pos+1)//2)] + val
+            dic[depth, pos] = dic[depth-1, (pos+1)//2] + val
             
         res = 0
         for depth,pos in dic.keys():
