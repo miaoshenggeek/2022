@@ -8,12 +8,9 @@ class Node:
 
 class Solution:
     def cloneTree(self, root: 'Node') -> 'Node':
-        if not root:return
         seen={}
         def helper (root):
             if not root:return
-            '''if root in seen:
-                return seen[root]'''
             new=Node(root.val)
             seen[root]=new
             for i in root.children:
