@@ -7,8 +7,8 @@ class Solution:
         for i in range(len(nums)):
             cur+=nums[i]
             #print(pre_sum)
-            if cur-k in pre_sum:
-                res+=pre_sum[cur-k]
+            
+            res+=pre_sum[cur-k]
             pre_sum[cur]+=1
             #print(res)
         return res
