@@ -10,17 +10,18 @@ class Solution:
             nonlocal res
             if not root:return 
             cur_sum+=root.val
-            if cur_sum==t:
-                res+=1
+            #if cur_sum==t:
+            #    res+=1
             res+=h[cur_sum-t] #a path of sum t has occured up till cur node
             h[cur_sum]+=1 #add cur sum for child node processing
-            #print(h,res,cur_sum)
+            #print(sorted(h.items()),res,cur_sum)
             helper(root.left,cur_sum)
             helper(root.right,cur_sum)
             h[cur_sum]-=1 #remove cur sum for the parallel subtree processing
             #print(res,cur_sum,h)
         res=0
         h=defaultdict(int)
+        h[0]=1
         helper(root,0)
         
         return res
