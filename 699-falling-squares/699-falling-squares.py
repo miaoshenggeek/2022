@@ -1,5 +1,5 @@
 class Solution:
-    def fallingSquares(self, positions: List[List[int]]) -> List[int]:
+    def ffallingSquares(self, positions: List[List[int]]) -> List[int]:
         #Offline Propagation
         qans = [0] * len(positions)
         for i, (left, size) in enumerate(positions):
@@ -14,7 +14,7 @@ class Solution:
         for x in qans:
             ans.append(max(ans[-1], x) if ans else x)
         return ans
-    def ffallingSquares(self, positions: List[List[int]]) -> List[int]:
+    def fallingSquares(self, positions: List[List[int]]) -> List[int]:
         #Coordinate Compression
         coords = set()
         for left, size in positions:
