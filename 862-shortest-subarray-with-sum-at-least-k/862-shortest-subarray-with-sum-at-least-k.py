@@ -1,14 +1,14 @@
 class Solution:
     def shortestSubarray(self, A: List[int], K: int) -> int:
-        d = collections.deque([[0, 0]])
+        d = deque([[-1, 0]]) #(idx,value)
         res, cur = float('inf'), 0
         for i, a in enumerate(A):
             cur += a
             while d and cur - d[0][1] >= K:
-                res = min(res, i + 1 - d.popleft()[0])
+                res = min(res, i  - d.popleft()[0])
             while d and cur <= d[-1][1]:
                 d.pop()
-            d.append([i + 1, cur])
+            d.append([i , cur])
         return res if res < float('inf') else -1
     """
     Why keep the deque increase?
