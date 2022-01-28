@@ -4,7 +4,7 @@ class Solution:
         res=0
         seen=defaultdict(int)
         for right in range(len(s)):
-            if s[right] in seen and seen[s[right]]+1>=left:
+            if s[right] in seen and seen[s[right]]+1>left:
                 left=seen[s[right]]+1
             else:
                 res=max(res,right-left+1)
