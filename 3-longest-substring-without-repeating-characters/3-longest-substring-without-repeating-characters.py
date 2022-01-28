@@ -1,21 +1,18 @@
 class Solution:
     def lengthOfLongestSubstring(self, s):
-        if not s: return 0
-        res=1
-        n=len(s)
-        start=0
-        end=0
-        loc=defaultdict(int)
-        loc[s[start]]=start
-        while end<n-1:
-            end+=1
-            if s[end] in loc and loc[s[end]]>=start:
-                start=loc[s[end]]+1   
-            else:
-                res=max(end-start+1,res)
-            loc[s[end]]=end
-            #print(res,start,end,loc)
+        left=0
+        res=0
+        seen=defaultdict(int)
+        for right in range(len(s)):
+            
+            if s[right] in seen:
+                left=max(left,seen[s[right]]+1)
+            seen[s[right]]=right    
+            res=max(res,right-left+1)
+            #print(left,right,res)
+            #print(seen)
         return res
+                
 '''
 "pwwkew"
 "tmmzuxt"
