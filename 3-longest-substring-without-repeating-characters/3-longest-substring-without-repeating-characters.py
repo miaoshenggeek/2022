@@ -4,9 +4,11 @@ class Solution:
         res=0
         seen=defaultdict(int)
         for right in range(len(s)):
-            
-            if s[right] in seen:
-                left=max(left,seen[s[right]]+1)
+            if not seen:
+                seen[s[right]]=right 
+            else:
+                if s[right] in seen:
+                    left=max(left,seen[s[right]]+1)
             seen[s[right]]=right    
             res=max(res,right-left+1)
             #print(left,right,res)
