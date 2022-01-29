@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         res=0
-        cur=Counter()  #counter
+        cur={}  #counter
         l=0
         for r in range(len(s)):
             if s[r] in cur:
