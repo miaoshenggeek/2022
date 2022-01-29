@@ -10,7 +10,7 @@ class Solution:
                 cur[s[r]]=1
             while len(cur)>2 and l<r:
                 cur[s[l]]-=1
-                if cur[s[l]]==0:cur.pop(s[l])
+                if cur[s[l]]==0:del cur[s[l]]
                 l+=1
             
             res=max(res,r-l+1)
