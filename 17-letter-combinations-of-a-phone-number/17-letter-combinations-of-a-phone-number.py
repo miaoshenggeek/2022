@@ -9,15 +9,17 @@ class Solution:
              '8':['t','u','v'],
              '9':['w','x','y','z']
             }
-    
-        if not digits:return 
-        n=len(digits)
-        res=deque(adj[digits[0]])
-        for i in digits[1:]:
-            a=len(res)
-            for _ in range(a):
-                cur=res.popleft()
-                for j in adj[i]:
-                    res.append(cur+j)
-        return list(res)
+        #bfs
+        def bfs():
+            if not digits:return 
+            n=len(digits)
+            res=deque(adj[digits[0]])
+            for i in digits[1:]:
+                a=len(res)
+                for _ in range(a):
+                    cur=res.popleft()
+                    for j in adj[i]:
+                        res.append(cur+j)
+            return list(res)
+        return bfs()
             
