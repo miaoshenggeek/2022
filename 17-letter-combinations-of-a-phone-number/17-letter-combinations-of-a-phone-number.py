@@ -21,5 +21,18 @@ class Solution:
                     for j in adj[i]:
                         res.append(cur+j)
             return list(res)
-        return bfs()
-            
+        #return bfs()
+        def dfs(k,cur):
+
+            if k==n:
+                res.append(cur) 
+                return
+            for nei in adj[digits[k]]:
+                dfs(k+1,cur+nei)
+                
+        if not digits:return
+        res=[]
+        seen=[]
+        n=len(digits)  
+        dfs(0,"")
+        return res
