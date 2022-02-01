@@ -17,13 +17,11 @@ class Solution:
         return False
     def canReach(self, arr: List[int], start: int) -> bool:
         def helper(start):
-            if 0<=start<len(arr) and start not in seen:
+            if 0<=start<len(arr) and arr[start]>=0:
                 if arr[start]==0:return True
-                seen.add(start)
+                arr[start]*=-1
                 return helper(start-arr[start]) or helper(start+arr[start])
             return False
-        
-        seen=set()
         return helper(start)
         
             
